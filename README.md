@@ -1,6 +1,11 @@
-# spaceport-boot
-Bootloader Entries for Spaceport
+# The Spaceport Project
+### Bootloader Entries
 
 Systemd-boot Bootloader entries
+For systemd-boot (The bestest boot manager!)
 
-In /boot/loader/entries
+```
+Located In: /boot/loader/entries/
+```
+
+Enables all the good powersaving features and has LTS fallback incase of kernel issues. (I'm paranoid ok?)
