@@ -21,9 +21,9 @@ UUID_ROOT="$2"
 UUID_RESUME="$3"
 
 python3 generate.py \
-  --name "Spaceport (LTS)" \
-  --kernel "vmlinuz-linux-lts" \
-  --init "initramfs-linux-lts.img" \
+  --name "Spaceport" \
+  --kernel "vmlinuz-linux-zen" \
+  --init "initramfs-linux-zen.img" \
   --ucode \
   --lvm $UUID_LVM \
   --group "spaceport" \
@@ -31,19 +31,19 @@ python3 generate.py \
   --resume $UUID_RESUME > ./spaceport.conf
 
 python3 generate.py \
-  --name "Spaceport (Linux)" \
-  --kernel "vmlinuz-linux" \
-  --init "initramfs-linux.img" \
+  --name "Spaceport (LTS)" \
+  --kernel "vmlinuz-linux-lts" \
+  --init "initramfs-linux-lts.img" \
   --ucode \
   --lvm $UUID_LVM \
   --group "spaceport" \
   --root $UUID_ROOT \
-  --resume $UUID_RESUME > ./spaceport-linux.conf
+  --resume $UUID_RESUME > ./spaceport-lts.conf
 
 python3 generate.py \
   --name "Spaceport (No Resume)" \
-  --kernel "vmlinuz-linux-lts" \
-  --init "initramfs-linux-lts.img" \
+  --kernel "vmlinuz-linux-zen" \
+  --init "initramfs-linux-zen.img" \
   --ucode \
   --lvm $UUID_LVM \
   --group "spaceport" \
@@ -51,8 +51,8 @@ python3 generate.py \
 
 python3 generate.py \
   --name "Spaceport (Protections)" \
-  --kernel "vmlinuz-linux-lts" \
-  --init "initramfs-linux-lts.img" \
+  --kernel "vmlinuz-linux-zen" \
+  --init "initramfs-linux-zen.img" \
   --ucode --spectre \
   --lvm $UUID_LVM \
   --group "spaceport" \
