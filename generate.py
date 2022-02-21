@@ -26,7 +26,7 @@ ROOT_FLAGS = [
     "ssd",
     "compress=zstd",
     "noatime",
-    "space_cache",
+    "space_cache=v2",
     "subvolid=256",
     "subvol=/base",
 ]
