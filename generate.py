@@ -22,10 +22,11 @@ from argparse import ArgumentParser
 
 ROOT_FLAGS = [
     "ro",
-    "rootflags=subvol=/base",
-    "ssd",
-    "compress=zstd",
+    "nodev",
     "noatime",
+    "compress=zstd",
+    "ssd",
+    "discard=async",
     "space_cache=v2",
     "subvolid=256",
     "subvol=/base",
@@ -35,6 +36,7 @@ BOOT_OPTIONS = [
     "module.sig_enforce=1",
     "quiet",
     "loglevel=2",
+    "audit=0",
     "rd.systemd.show_status=auto",
     "rd.udev.log_priority=2",
     "nowatchdog",
@@ -45,42 +47,37 @@ BOOT_OPTIONS = [
     "i915.enable_dc=2",
     "i915.enable_fbc=1",
     "i915.reset=3",
-    "i915.enable_hangcheck=Y",
-    "i915.enable_psr=1",
-    "i915.psr_safest_params=N",
-    "i915.enable_psr2_sel_fetch=Y",
+    "i915.enable_hangcheck=1",
+    "i915.enable_psr=2",
+    "i915.psr_safest_params=0",
+    "i915.enable_psr2_sel_fetch=1",
     "i915.disable_power_well=1",
     "i915.enable_ips=1",
     "i915.fastboot=1",
-    "i915.disable_display=N",
-    "i915.nuclear_pageflip=Y",
+    "i915.disable_display=0",
+    "i915.memtest=0",
+    "i915.nuclear_pageflip=1",
     "i915.enable_guc=3",
-    "i915.enable_dp_mst=Y",
+    "i915.enable_dp_mst=1",
     "i915.enable_dpcd_backlight=1",
-    "i915.enable_gvt=N",
+    "i915.enable_gvt=1",
     "intel_iommu=on",
     "iwlwifi.led_mode=0",
     "iwlwifi.swcrypto=0",
     "iwlwifi.power_save=1",
     "iwlwifi.uapsd_disable=0",
     "iwldvm.force_cam=0",
+    "snd_hda_intel.index=-1",
     "snd_hda_intel.power_save=1",
-    "snd_hda_intel.power_save_controller=Y",
+    "snd_hda_intel.power_save_controller=1",
     "atkbd.reset=1",
     "i8042.reset=1",
 ]
 
 MITIGATION_DISABLE = [
-    "noibrs",
-    "noibpb",
-    "nopti",
-    "nospectre_v2",
     "nospectre_v1",
     "l1tf=off",
-    "nospec_store_bypass_disable",
-    "no_stf_barrier",
     "mds=off",
-    "tsx=on",
     "tsx_async_abort=off",
     "mitigations=off",
 ]
@@ -176,7 +173,7 @@ if __name__ == "__main__":
     b.write(p.lvm)
     b.write("=")
     b.write(p.group)
-    b.write(" ")
+    b.write(" luks.options=discard ")
     if isinstance(p.resume, str) and len(p.resume) > 0:
         b.write("resume=UUID=")
         b.write(p.resume)
@@ -184,9 +181,10 @@ if __name__ == "__main__":
     b.write("root=UUID=")
     b.write(p.root)
     b.write(" ")
-    for v in ROOT_FLAGS:
-        b.write(v)
-        b.write(" ")
+    if len(ROOT_FLAGS) > 0:
+        b.write("rootflags=")
+        b.write(",".join(ROOT_FLAGS))
+    b.write(" ")
     for v in BOOT_OPTIONS:
         b.write(v)
         b.write(" ")

@@ -16,6 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+set -e
+
 UUID_LVM="$1"
 UUID_ROOT="$2"
 UUID_RESUME="$3"
