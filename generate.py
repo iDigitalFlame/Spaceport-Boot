@@ -1,6 +1,25 @@
 #!/usr/bin/python3
+################################
+### iDigitalFlame  2016-2024 ###
+#                              #
+#            -/`               #
+#            -yy-   :/`        #
+#         ./-shho`:so`         #
+#    .:- /syhhhh//hhs` `-`     #
+#   :ys-:shhhhhhshhhh.:o- `    #
+#   /yhsoshhhhhhhhhhhyho`:/.   #
+#   `:yhyshhhhhhhhhhhhhh+hd:   #
+#     :yssyhhhhhyhhhhhhhhdd:   #
+#    .:.oyshhhyyyhhhhhhddd:    #
+#    :o+hhhhhyssyhhdddmmd-     #
+#     .+yhhhhyssshdmmddo.      #
+#       `///yyysshd++`         #
+#                              #
+########## SPACEPORT ###########
+### Spaceport + SMD
+## Boot Configuration Generator
 #
-# Copyright (C) 2021 - 2023 iDigitalFlame
+# Copyright (C) 2016 - 2024 iDigitalFlame
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,37 +60,40 @@ BOOT_OPTIONS = [
     "rd.udev.log_priority=2",
     "nowatchdog",
     "nmi_watchdog=0",
-    "pcie_aspm=force",
     "intel_pstate=skylake_hwp",
-    "i915.modeset=1",
-    "i915.enable_dc=2",
-    "i915.enable_fbc=1",
-    "i915.reset=3",
-    "i915.enable_hangcheck=1",
-    "i915.enable_psr=2",
-    "i915.psr_safest_params=0",
-    "i915.enable_psr2_sel_fetch=1",
-    "i915.disable_power_well=1",
-    "i915.enable_ips=1",
-    "i915.fastboot=1",
     "i915.disable_display=0",
+    "i915.reset=3",
+    "i915.modeset=1",
     "i915.memtest=0",
-    "i915.nuclear_pageflip=1",
-    "i915.enable_guc=3",
-    "i915.enable_dp_mst=1",
-    "i915.enable_dpcd_backlight=1",
+    "i915.fastboot=1",
+    "i915.enable_dc=4",
+    "i915.enable_dpt=1",
+    "i915.enable_fbc=1",
     "i915.enable_gvt=1",
+    "i915.enable_guc=3",
+    "i915.enable_psr=2",
+    "i915.enable_ips=1",
+    "i915.enable_sagv=1",
+    "i915.enable_dp_mst=1",
+    "i915.enable_hangcheck=1",
+    "i915.enable_dpcd_backlight=1",
+    "i915.enable_psr2_sel_fetch=1",
+    "i915.nuclear_pageflip=1",
+    "i915.psr_safest_params=0",
+    "i915.disable_power_well=1",
+    "i915.verbose_state_checks=0",
+    "i915.force_reset_modeset_test=0",
     "intel_iommu=on",
+    "iwlmvm.power_scheme=3",
     "iwlwifi.led_mode=0",
     "iwlwifi.swcrypto=0",
     "iwlwifi.power_save=1",
     "iwlwifi.uapsd_disable=0",
-    "iwldvm.force_cam=0",
-    "snd_hda_intel.index=-1",
+    "snd_usb_audio.enable=1",
+    "snd_hda_intel.enable=1",
     "snd_hda_intel.power_save=1",
     "snd_hda_intel.power_save_controller=1",
-    "atkbd.reset=1",
-    "i8042.reset=1",
+    "snd_hda_intel.index=-1",
 ]
 
 MITIGATION_DISABLE = [

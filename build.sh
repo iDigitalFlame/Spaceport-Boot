@@ -1,6 +1,25 @@
 #!/usr/bin/bash
+################################
+### iDigitalFlame  2016-2024 ###
+#                              #
+#            -/`               #
+#            -yy-   :/`        #
+#         ./-shho`:so`         #
+#    .:- /syhhhh//hhs` `-`     #
+#   :ys-:shhhhhhshhhh.:o- `    #
+#   /yhsoshhhhhhhhhhhyho`:/.   #
+#   `:yhyshhhhhhhhhhhhhh+hd:   #
+#     :yssyhhhhhyhhhhhhhhdd:   #
+#    .:.oyshhhyyyhhhhhhddd:    #
+#    :o+hhhhhyssyhhdddmmd-     #
+#     .+yhhhhyssshdmmddo.      #
+#       `///yyysshd++`         #
+#                              #
+########## SPACEPORT ###########
+### Spaceport + SMD
+## Boot Configuration Generator Script
 #
-# Copyright (C) 2021 - 2023 iDigitalFlame
+# Copyright (C) 2016 - 2024 iDigitalFlame
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,6 +36,11 @@
 #
 
 set -e
+
+if [ $# -ne 3 ]; then
+    printf "%s <lvm_uuid> <root_uuid> <swap_uuid>\n" "$0"
+    exit 2
+fi
 
 UUID_LVM="$1"
 UUID_ROOT="$2"
@@ -52,11 +76,11 @@ python3 generate.py \
   --root $UUID_ROOT > ./spaceport-noresume.conf
 
 python3 generate.py \
-  --name "Spaceport (Protections)" \
+  --name "Spaceport (Mitigations)" \
   --kernel "vmlinuz-linux-zen" \
   --init "initramfs-linux-zen.img" \
   --ucode --spectre \
   --lvm $UUID_LVM \
   --group "spaceport" \
   --root $UUID_ROOT \
-  --resume $UUID_RESUME > ./spaceport-protections.conf
+  --resume $UUID_RESUME > ./spaceport-mitigations.conf
