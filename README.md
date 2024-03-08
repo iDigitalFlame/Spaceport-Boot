@@ -2,7 +2,7 @@
 
 ## ARCHIVED
 
-I've moved to unified kernel images. Check the (spaceport)[https://github.com/iDigitalFlame/Spaceport] to have a look!
+I've moved to unified kernel images. Check the [spaceport](https://github.com/iDigitalFlame/Spaceport) to have a look!
 For more info on unified kernel images, check this [ArchWiki Entry](https://wiki.archlinux.org/title/Unified_kernel_image).
 
 ### Bootloader Entries
